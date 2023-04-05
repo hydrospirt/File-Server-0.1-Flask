@@ -1,0 +1,18 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>File Server</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+    <meta name="theme-color" content="#712cf9">
+</head>
+<body>
+    <p> Время сервера: {{ context }} </p>
+    <div class="px-4 py-5 my-5 text-center">
+        <h1 class="display-5 fw-bold text-body-emphasis">Добро пожаловать</h1>
+        <p><a href="{{ url_for('get_list') }}">Посмотреть файлы</a></p>
+        <p><a href="{{ url_for('upload_file') }}">Перейти к загрузке</a></p>
+    </div>
+</body>
+</html>

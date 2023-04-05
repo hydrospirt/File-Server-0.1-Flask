@@ -1,0 +1,39 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>File Server</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+    <meta name="theme-color" content="#712cf9">
+    <style>
+      form {
+        padding: 10px;
+      }
+    </style>
+</head>
+<body>
+    <div class="px-4 py-5 my-5 text-center">
+        <h1 class="display-5 fw-bold text-body-emphasis">Загруженные файлы</h1>
+        <p><a href="{{ url_for('index') }}">Вернуться на главную страницу</a></p>
+        <ul class="list-group">
+            {% for i in list %}
+            <li class="list-group-item">Номер: <b>{{i.id}}</b>, Имя файла: <b>{{i.name}}</b> Формат файла: <b>{{i.file_ext}}</b> Дата создания:<b> {{i.created}}</b>
+              <div class="container">
+                <div class="row">
+                  <div class="col-sm">
+                    <form class="col-sm" action="/uploads/{{i.name}}" method="POST">
+                        <input type="submit" class="btn btn-primary" value="Скачать">
+                    </form>
+                  </div>
+                    <form class="col-sm" action="/files/delete/{{i.name}}" method="POST">
+                        <input type="submit" class="btn btn-primary" value="Удалить">
+                  </form>
+            </li>
+                 <div>
+              </div>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
